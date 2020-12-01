@@ -29,6 +29,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 
+import java.util.ArrayList;
+import java.lang.Math;
+
 @Mod(modid = LodsOfEmone.MODID, acceptedMinecraftVersions = "[1.12, 1.13)", dependencies = "required-after:ftbmoney", guiFactory = "lodsofemone.GuiFactory")
 @Mod.EventBusSubscriber
 public class LodsOfEmone
@@ -39,6 +42,15 @@ public class LodsOfEmone
 
     public static int[] coinSmallValues;
     public static int[] coinBigValues;
+
+// GT Coins
+    public static int[] coinCupronickelValues;
+    public static int[] coinSilverValues;
+    public static int[] coinGoldValues;
+    public static int[] coinPlatinumValues;
+    public static int[] coinOsmiumValues;
+    public static int[] coinNaquadahValues;
+    public static int[] coinDarmstadtiumValues;
 
     @GameRegistry.ObjectHolder("lodsofemone:coin_small")
     public static Item COIN_SMALL;
@@ -83,16 +95,13 @@ public class LodsOfEmone
     public static void loadConfig() {
         coinSmallValues = config.get("coins", "coinSmallValues", new int[] { 1, 10, 25, 50 }, "List of small coin denominations that show up in JEI.").getIntList();
         coinBigValues = config.get("coins", "coinBigValues", new int[] { 100, 200, 500, 1000, 5000, 10000 }, "List of big coin denominations that show up in JEI.").getIntList();
-        
-        // GT Coins
-        
-        coinCupronickelValues = config.get("coins", "coinCupronickelValues", new int[] { 100, 200, 500, 1000, 5000, 10000 }, "Coin values that show up in JEI, if you need to change them.").getIntList();
-        coinSilverValues = config.get("coins", "coinSilverValues", new int[] { 100, 200, 500, 1000, 5000, 10000 }, "Coin values that show up in JEI, if you need to change them.").getIntList();
-        coinGoldValues = config.get("coins", "coinGoldValues", new int[] { 100, 200, 500, 1000, 5000, 10000 }, "Coin values that show up in JEI, if you need to change them.").getIntList();
-        coinPlatinumValues = config.get("coins", "coinPlatinumValues", new int[] { 100, 200, 500, 1000, 5000, 10000 }, "Coin values that show up in JEI, if you need to change them.").getIntList();
-        coinOsmiumValues = config.get("coins", "coinOsmiumValues", new int[] { 100, 200, 500, 1000, 5000, 10000 }, "Coin values that show up in JEI, if you need to change them.").getIntList();
-        coinNaquadahValues = config.get("coins", "coinNaquadahValues", new int[] { 100, 200, 500, 1000, 5000, 10000 }, "Coin values that show up in JEI, if you need to change them.").getIntList();
-        coinDarmstadtiumValues = config.get("coins", "coinDarmstadtiumValues", new int[] { 100, 200, 500, 1000, 5000, 10000 }, "Coin values that show up in JEI, if you need to change them.").getIntList();
+        coinCupronickelValues = config.get("coins", "coinCupronickelValues", new int[] { 1 }, "List of Cupronickel coin denominations that show up in JEI.").getIntList();
+        coinSilverValues = config.get("coins", "coinSilverValues", new int[] { 8 }, "List of Silver coin denominations that show up in JEI.").getIntList();
+        coinGoldValues = config.get("coins", "coinGoldValues", new int[] { 64 }, "List of Gold coin denominations that show up in JEI.").getIntList();
+        coinPlatinumValues = config.get("coins", "coinPlatinumValues", new int[] { 512 }, "List of Platinum coin denominations that show up in JEI.").getIntList();
+        coinOsmiumValues = config.get("coins", "coinOsmiumValues", new int[] { 4096 }, "List of Osmium coin denominations that show up in JEI.").getIntList();
+        coinNaquadahValues = config.get("coins", "coinNaquadahValues", new int[] { 32768 }, "List of Naquadah coin denominations that show up in JEI.").getIntList();
+        coinDarmstadtiumValues = config.get("coins", "coinDarmstadtiumValues", new int[] { 262144 }, "List of Darmstadtium coin denominations that show up in JEI.").getIntList();
        
         if (config.hasChanged()) {
             config.save();
@@ -101,20 +110,52 @@ public class LodsOfEmone
 
     @SubscribeEvent
     public void registerItems(RegistryEvent.Register<Item> event) {
-        String[] coins = {"Copper", "Cupronickel", "Silver", "Gold", "Platinum", "Osmium", "Naquadah", "Darmstadtium"};
-        for (String coin : coins) {
-            String coinLower = coin.toLowerCase();
-            String coinUpper = coin.toUpperCase();
-            String coinVarRegister = "COIN_" + coinUpper;
-            String coinVarValues = "coin" + coin + "Values;
-            String coinVarRegisterLower = "coin_" + coinLower;
-            event.getRegistry().register(CoinVarRegister = new ItemCoin() {
-                @Override
-                public int[] getDenominations() {
-                    return coinVarValues;
-                }
-            }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,coinVarRegisterLower)).setUnlocalizedName(coinVarRegisterLower).setCreativeTab(CreativeTabs.MATERIALS));
-        }
+
+        event.getRegistry().register(COIN_CUPRONICKEL = new ItemCoin() {
+            @Override
+            public int[] getDenominations() {
+                return coinCupronickelValues;
+            }
+        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_cupronickel")).setUnlocalizedName("coin_cupronickel").setCreativeTab(CreativeTabs.MATERIALS));
+        event.getRegistry().register(COIN_SILVER = new ItemCoin() {
+            @Override
+            public int[] getDenominations() {
+                return coinSilverValues;
+            }
+        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_silver")).setUnlocalizedName("coin_silver").setCreativeTab(CreativeTabs.MATERIALS));
+        event.getRegistry().register(COIN_GOLD = new ItemCoin() {
+            @Override
+            public int[] getDenominations() {
+                return coinGoldValues;
+            }
+        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_gold")).setUnlocalizedName("coin_gold").setCreativeTab(CreativeTabs.MATERIALS));
+        event.getRegistry().register(COIN_PLATINUM = new ItemCoin() {
+            @Override
+            public int[] getDenominations() {
+                return coinPlatinumValues;
+            }
+        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_platinum")).setUnlocalizedName("coin_platinum").setCreativeTab(CreativeTabs.MATERIALS));
+        event.getRegistry().register(COIN_OSMIUM = new ItemCoin() {
+            @Override
+            public int[] getDenominations() {
+                return coinOsmiumValues;
+            }
+        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_osmium")).setUnlocalizedName("coin_osmium").setCreativeTab(CreativeTabs.MATERIALS));
+        event.getRegistry().register(COIN_NAQUADAH = new ItemCoin() {
+            @Override
+            public int[] getDenominations() {
+                return coinNaquadahValues;
+            }
+        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_naquadah")).setUnlocalizedName("coin_naquadah").setCreativeTab(CreativeTabs.MATERIALS));
+        event.getRegistry().register(COIN_DARMSTADTIUM = new ItemCoin() {
+            @Override
+            public int[] getDenominations() {
+                return coinDarmstadtiumValues;
+            }
+        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_darmstadtium")).setUnlocalizedName("coin_darmstadtium").setCreativeTab(CreativeTabs.MATERIALS));
+
+
+
         event.getRegistry().register(COIN_SMALL = new ItemCoin() {
             @Override
             public int[] getDenominations() {
@@ -134,6 +175,14 @@ public class LodsOfEmone
     public void registerModels(ModelRegistryEvent event) {
         registerItemModel(COIN_SMALL, 0, "inventory");
         registerItemModel(COIN_BIG, 0, "inventory");
+
+        registerItemModel(COIN_CUPRONICKEL, 0, "inventory");
+        registerItemModel(COIN_SILVER, 0, "inventory");
+        registerItemModel(COIN_GOLD, 0, "inventory");
+        registerItemModel(COIN_PLATINUM, 0, "inventory");
+        registerItemModel(COIN_OSMIUM, 0, "inventory");
+        registerItemModel(COIN_NAQUADAH, 0, "inventory");
+        registerItemModel(COIN_DARMSTADTIUM, 0, "inventory");
     }
 
     @SideOnly(Side.CLIENT)

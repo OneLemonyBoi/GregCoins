@@ -1,14 +1,14 @@
 [
 {
-  "modid": "lodsofemone",
-  "name": "Lods of Emone",
-  "description": "MONEY MONEY MONEY",
+  "modid": "gregcoins",
+  "name": "GregCoins",
+  "description": "FTB Money mod, based on LodsOfEmone, that adds GT coins as physical currency.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["BordListian", "Edited by OneLemonyBoi"],
-  "credits": "LatvianModder for making FTB Money, and BordListain for making the base mod",
+  "authorList": ["OneLemonyBoi"],
+  "credits": "LatvianModder for making FTB Money, and BordListain for making the original mod",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
