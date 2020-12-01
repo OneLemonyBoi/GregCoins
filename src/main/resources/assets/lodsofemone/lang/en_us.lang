@@ -1,0 +1,10 @@
+item.coin_small.name=%s Coin
+item.coin_big.name=%s Coin
+item.coin_cupronickel.name=Cupronickel Credit (%s)
+item.coin_silver.name=Silver Credit (%s)
+item.coin_gold.name=Gold Credit (%s)
+item.coin_platinum.name=Platinum Credit (%s)
+item.coin_osmium.name=Osmium Credit (%s)
+item.coin_naquadah.name=Naquadah Credit (%s)
+item.coin_darmstadtium.name=Darmstadtium Credit (%s)
+itemGroup.tabGTCoins=GT Coins

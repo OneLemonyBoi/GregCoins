@@ -1,0 +1,16 @@
+[
+{
+  "modid": "lodsofemone",
+  "name": "Lods of Emone",
+  "description": "MONEY MONEY MONEY",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["BordListian", "Edited by OneLemonyBoi"],
+  "credits": "LatvianModder for making FTB Money, and BordListain for making the base mod",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
