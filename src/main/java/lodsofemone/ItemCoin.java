@@ -1,4 +1,4 @@
-package lodsofemone;
+package gregcoins;
 
 import com.feed_the_beast.mods.money.FTBMoney;
 import net.minecraft.creativetab.CreativeTabs;

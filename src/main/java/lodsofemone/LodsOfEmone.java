@@ -1,4 +1,4 @@
-package lodsofemone;
+package gregcoins;
 
 import com.google.common.collect.BiMap;
 import net.minecraft.block.Block;
@@ -32,11 +32,11 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.lang.Math;
 
-@Mod(modid = LodsOfEmone.MODID, acceptedMinecraftVersions = "[1.12, 1.13)", dependencies = "required-after:ftbmoney", guiFactory = "lodsofemone.GuiFactory")
+@Mod(modid = GregCoins.MODID, acceptedMinecraftVersions = "[1.12, 1.13)", dependencies = "required-after:ftbmoney", guiFactory = "gregcoins.GuiFactory")
 @Mod.EventBusSubscriber
-public class LodsOfEmone
+public class GregCoins
 {
-    public static final String MODID = "lodsofemone";
+    public static final String MODID = "gregcoins";
 
     public static Configuration config;
 
@@ -52,26 +52,26 @@ public class LodsOfEmone
     public static int[] coinNaquadahValues;
     public static int[] coinDarmstadtiumValues;
 
-    @GameRegistry.ObjectHolder("lodsofemone:coin_small")
+    @GameRegistry.ObjectHolder("gregcoins:coin_small")
     public static Item COIN_SMALL;
-    @GameRegistry.ObjectHolder("lodsofemone:coin_big")
+    @GameRegistry.ObjectHolder("gregcoins:coin_big")
     public static Item COIN_BIG;
     
     // Custom GT Coins
     
-    @GameRegistry.ObjectHolder("lodsofemone:coin_cupronickel")
+    @GameRegistry.ObjectHolder("gregcoins:coin_cupronickel")
     public static Item COIN_CUPRONICKEL;
-    @GameRegistry.ObjectHolder("lodsofemone:coin_silver")
+    @GameRegistry.ObjectHolder("gregcoins:coin_silver")
     public static Item COIN_SILVER;
-    @GameRegistry.ObjectHolder("lodsofemone:coin_gold")
+    @GameRegistry.ObjectHolder("gregcoins:coin_gold")
     public static Item COIN_GOLD;
-    @GameRegistry.ObjectHolder("lodsofemone:coin_platinum")
+    @GameRegistry.ObjectHolder("gregcoins:coin_platinum")
     public static Item COIN_PLATINUM;
-    @GameRegistry.ObjectHolder("lodsofemone:coin_osmium")
+    @GameRegistry.ObjectHolder("gregcoins:coin_osmium")
     public static Item COIN_OSMIUM;
-    @GameRegistry.ObjectHolder("lodsofemone:coin_naquadah")
+    @GameRegistry.ObjectHolder("gregcoins:coin_naquadah")
     public static Item COIN_NAQUADAH;
-    @GameRegistry.ObjectHolder("lodsofemone:coin_darmstadtium")
+    @GameRegistry.ObjectHolder("gregcoins:coin_darmstadtium")
     public static Item COIN_DARMSTADTIUM;
 
     @Mod.EventHandler
@@ -86,7 +86,7 @@ public class LodsOfEmone
     @SubscribeEvent
     public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event)
     {
-        if(event.getModID().equalsIgnoreCase(LodsOfEmone.MODID))
+        if(event.getModID().equalsIgnoreCase(GregCoins.MODID))
         {
             loadConfig();
         }
@@ -116,43 +116,43 @@ public class LodsOfEmone
             public int[] getDenominations() {
                 return coinCupronickelValues;
             }
-        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_cupronickel")).setUnlocalizedName("coin_cupronickel").setCreativeTab(CreativeTabs.MATERIALS));
+        }.setRegistryName(new ResourceLocation(GregCoins.MODID,"coin_cupronickel")).setUnlocalizedName("coin_cupronickel").setCreativeTab(CreativeTabs.MATERIALS));
         event.getRegistry().register(COIN_SILVER = new ItemCoin() {
             @Override
             public int[] getDenominations() {
                 return coinSilverValues;
             }
-        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_silver")).setUnlocalizedName("coin_silver").setCreativeTab(CreativeTabs.MATERIALS));
+        }.setRegistryName(new ResourceLocation(GregCoins.MODID,"coin_silver")).setUnlocalizedName("coin_silver").setCreativeTab(CreativeTabs.MATERIALS));
         event.getRegistry().register(COIN_GOLD = new ItemCoin() {
             @Override
             public int[] getDenominations() {
                 return coinGoldValues;
             }
-        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_gold")).setUnlocalizedName("coin_gold").setCreativeTab(CreativeTabs.MATERIALS));
+        }.setRegistryName(new ResourceLocation(GregCoins.MODID,"coin_gold")).setUnlocalizedName("coin_gold").setCreativeTab(CreativeTabs.MATERIALS));
         event.getRegistry().register(COIN_PLATINUM = new ItemCoin() {
             @Override
             public int[] getDenominations() {
                 return coinPlatinumValues;
             }
-        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_platinum")).setUnlocalizedName("coin_platinum").setCreativeTab(CreativeTabs.MATERIALS));
+        }.setRegistryName(new ResourceLocation(GregCoins.MODID,"coin_platinum")).setUnlocalizedName("coin_platinum").setCreativeTab(CreativeTabs.MATERIALS));
         event.getRegistry().register(COIN_OSMIUM = new ItemCoin() {
             @Override
             public int[] getDenominations() {
                 return coinOsmiumValues;
             }
-        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_osmium")).setUnlocalizedName("coin_osmium").setCreativeTab(CreativeTabs.MATERIALS));
+        }.setRegistryName(new ResourceLocation(GregCoins.MODID,"coin_osmium")).setUnlocalizedName("coin_osmium").setCreativeTab(CreativeTabs.MATERIALS));
         event.getRegistry().register(COIN_NAQUADAH = new ItemCoin() {
             @Override
             public int[] getDenominations() {
                 return coinNaquadahValues;
             }
-        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_naquadah")).setUnlocalizedName("coin_naquadah").setCreativeTab(CreativeTabs.MATERIALS));
+        }.setRegistryName(new ResourceLocation(GregCoins.MODID,"coin_naquadah")).setUnlocalizedName("coin_naquadah").setCreativeTab(CreativeTabs.MATERIALS));
         event.getRegistry().register(COIN_DARMSTADTIUM = new ItemCoin() {
             @Override
             public int[] getDenominations() {
                 return coinDarmstadtiumValues;
             }
-        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_darmstadtium")).setUnlocalizedName("coin_darmstadtium").setCreativeTab(CreativeTabs.MATERIALS));
+        }.setRegistryName(new ResourceLocation(GregCoins.MODID,"coin_darmstadtium")).setUnlocalizedName("coin_darmstadtium").setCreativeTab(CreativeTabs.MATERIALS));
 
 
 
@@ -161,13 +161,13 @@ public class LodsOfEmone
             public int[] getDenominations() {
                 return coinSmallValues;
             }
-        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_small")).setUnlocalizedName("coin_small").setCreativeTab(CreativeTabs.MATERIALS));
+        }.setRegistryName(new ResourceLocation(GregCoins.MODID,"coin_small")).setUnlocalizedName("coin_small").setCreativeTab(CreativeTabs.MATERIALS));
         event.getRegistry().register(COIN_BIG = new ItemCoin() {
             @Override
             public int[] getDenominations() {
                 return coinBigValues;
             }
-        }.setRegistryName(new ResourceLocation(LodsOfEmone.MODID,"coin_big")).setUnlocalizedName("coin_big").setCreativeTab(CreativeTabs.MATERIALS));
+        }.setRegistryName(new ResourceLocation(GregCoins.MODID,"coin_big")).setUnlocalizedName("coin_big").setCreativeTab(CreativeTabs.MATERIALS));
     }
 
     @SideOnly(Side.CLIENT)

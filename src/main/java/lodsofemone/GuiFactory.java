@@ -1,4 +1,4 @@
-package lodsofemone;
+package gregcoins;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -38,14 +38,14 @@ public class GuiFactory implements IModGuiFactory {
     public static class GuiConfig extends net.minecraftforge.fml.client.config.GuiConfig {
 
         public GuiConfig(GuiScreen parentScreen) {
-            super(parentScreen, getAllElements(), LodsOfEmone.MODID, false, false, net.minecraftforge.fml.client.config.GuiConfig.getAbridgedConfigPath(LodsOfEmone.config.toString()));
+            super(parentScreen, getAllElements(), GregCoins.MODID, false, false, net.minecraftforge.fml.client.config.GuiConfig.getAbridgedConfigPath(GregCoins.config.toString()));
         }
 
         public static List<IConfigElement> getAllElements() {
             List<IConfigElement> list = new ArrayList<>();
 
-            Set<String> categories = LodsOfEmone.config.getCategoryNames();
-            list.addAll(categories.stream().filter(s -> !s.contains(".")).map(s -> new DummyConfigElement.DummyCategoryElement(s, s, new ConfigElement(LodsOfEmone.config.getCategory(s)).getChildElements())).collect(Collectors.toList()));
+            Set<String> categories = GregCoins.config.getCategoryNames();
+            list.addAll(categories.stream().filter(s -> !s.contains(".")).map(s -> new DummyConfigElement.DummyCategoryElement(s, s, new ConfigElement(GregCoins.config.getCategory(s)).getChildElements())).collect(Collectors.toList()));
 
             return list;
         }
